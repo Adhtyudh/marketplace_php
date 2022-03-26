@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 26, 2022 at 01:00 PM
+-- Generation Time: Mar 26, 2022 at 03:03 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -88871,6 +88871,20 @@ INSERT INTO `addresses_subdistricts` (`subdis_id`, `subdis_name`, `dis_id`) VALU
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `carts`
+--
+
+CREATE TABLE `carts` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `amount` int(11) NOT NULL,
+  `is_active` tinyint(1) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `orders`
 --
 
@@ -88880,6 +88894,17 @@ CREATE TABLE `orders` (
   `user_address_id` int(11) NOT NULL,
   `orders_status_id` int(11) NOT NULL,
   `total` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders_carts`
+--
+
+CREATE TABLE `orders_carts` (
+  `cart_id` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -88905,6 +88930,7 @@ CREATE TABLE `products` (
   `description` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL,
   `product_category_id` int(11) NOT NULL,
+  `price` int(11) NOT NULL,
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -88934,6 +88960,13 @@ CREATE TABLE `users` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `updated_at`, `created_at`) VALUES
+(1, 'aku', 'aku@email.com', '81dc9bdb52d04dc20036dbd8313ed055', '2022-03-26 12:59:43', '2022-03-26 12:59:43');
 
 -- --------------------------------------------------------
 
@@ -88979,10 +89012,22 @@ ALTER TABLE `addresses_subdistricts`
   ADD PRIMARY KEY (`subdis_id`) USING BTREE;
 
 --
+-- Indexes for table `carts`
+--
+ALTER TABLE `carts`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `orders_carts`
+--
+ALTER TABLE `orders_carts`
+  ADD PRIMARY KEY (`cart_id`);
 
 --
 -- Indexes for table `orders_status`
@@ -89043,6 +89088,12 @@ ALTER TABLE `addresses_subdistricts`
   MODIFY `subdis_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81226;
 
 --
+-- AUTO_INCREMENT for table `carts`
+--
+ALTER TABLE `carts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
@@ -89070,7 +89121,7 @@ ALTER TABLE `products_categories`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(22) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(22) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users_addresses`
