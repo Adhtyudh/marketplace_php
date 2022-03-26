@@ -114,7 +114,7 @@ function search($text, $koneksi)
 
             </div>
             <!-- Daftar Buku -->
-            <div class="d-flex mt-3">
+            <div class="d-flex">
 
                 <div class="d-flex align-items-start">
                     <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
