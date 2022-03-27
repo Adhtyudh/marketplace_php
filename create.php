@@ -61,12 +61,12 @@ if (isset($_POST['insert'])) {
         </a>
         <form action="" method="post" enctype="multipart/form-data">
           <div class="mb-3">
-            <label for="judul" class="form-label">Judul</label>
-            <input type="text" class="form-control" id="judul" name="judul" placeholder="Masukan Judul">
+            <label for="judul" class="form-label">Nama</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Masukan Nama">
           </div>
           <div class="mb-3">
             <label for="gambar" class="form-label">Gambar</label>
-            <input type="file" class="form-control" id="gambar" name="gambar">
+            <input type="file" class="form-control" id="image" name="image">
           </div>
           <div class="mb-3">
             <label for="pengarang" class="form-label">Pengarang</label>
@@ -80,17 +80,17 @@ if (isset($_POST['insert'])) {
             <label for="isbn" class="form-label">ISBN</label>
             <input type="text" class="form-control" id="isbn" name="isbn" placeholder="Masukan ISBN">
           </div>
-          
+
           <div class="mb-3">
-                <?php 
-                        $category = mysqli_query($koneksi, "SELECT * FROM kategori");
-                        while ($b = mysqli_fetch_array($category)) {
-                        ?> 
-                        <input type="radio" id="kategori" name="kategori" value=<?= $b['id']; ?>>
-                        <label for="css"><?= $b['nama']; ?></label><br>
-                        <?php 
-                        }
-                        ?>
+            <?php
+            $category = mysqli_query($koneksi, "SELECT * FROM kategori");
+            while ($b = mysqli_fetch_array($category)) {
+            ?>
+              <input type="radio" id="kategori" name="kategori" value=<?= $b['id']; ?>>
+              <label for="css"><?= $b['nama']; ?></label><br>
+            <?php
+            }
+            ?>
 
           </div>
           <div class="mb-3">
