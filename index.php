@@ -20,6 +20,8 @@
 </head>
 
 <body>
+
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
                 <h1 class="text text-primary navbar-brand">Store</h1>
@@ -39,11 +41,11 @@
                         </li>
                     </ul>
                     <form class="d-flex">
-                        <button class="btn btn-outline-dark" type="submit">
-                            <i class="bi-cart-fill me-1"></i>
+                        <a  href="cart.php"  class="btn btn-outline-dark" type="submit">
+                            <i  class="bi-cart-fill me-1"></i>
                             Cart
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                        </button>
+                            <span  class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                        </a>
                     </form>
                 </div>
                   <div class="d-flex">
