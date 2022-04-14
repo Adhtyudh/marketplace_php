@@ -14,17 +14,24 @@ if (isset($_SESSION['username'])) {
 if (isset($_POST['insert'])) {
   $email = $_POST['email'];
   $password = md5($_POST['password']);
+  if ($email || $password) {
+    if ($password) {
+      $sql = "SELECT * FROM users WHERE email='$email' AND password='$password'";
+      $result = mysqli_query($koneksi, $sql);
+      if ($result->num_rows > 0) {
+        $row = mysqli_fetch_assoc($result);
+        $_SESSION['username'] = $row['name'];
 
-  $sql = "SELECT * FROM users WHERE email='$email' AND password='$password'";
-  $result = mysqli_query($koneksi, $sql);
-  if ($result->num_rows > 0) {
-    $row = mysqli_fetch_assoc($result);
-    $_SESSION['username'] = $row['name'];
-
-    header("Location: index.php");
+        header("Location: index.php");
+      } else {
+        echo '<script type ="text/JavaScript">';
+        echo 'alert("Tidak Ditemukan")';
+        echo '</script>';
+      }
+    }
   } else {
     echo '<script type ="text/JavaScript">';
-    echo 'alert("Tidak Ditemukan")';
+    echo 'alert("isi lah")';
     echo '</script>';
   }
 }
@@ -36,46 +43,84 @@ if (isset($_POST['insert'])) {
 <html lang="en">
 
 <head>
-  <!-- Required meta tags -->
+
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="Assets/Style/logins.css">
+  <title>SB Admin 2 - Login</title>
 
-  <title>login perpustakaan</title>
+  <!-- Custom fonts for this template-->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
 </head>
 
 <body>
-  <div class="global-container">
-    <div class="card login-form">
-      <div class="card-body">
-        <h1 class="card-title text-center text-info">Login</h1>
+
+  <div class="container">
+
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
+
+      <div class="col-xl-10 col-lg-12 col-md-9">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+          <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row">
+              <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+              <div class="col-lg-6">
+                <div class="p-5">
+                  <div class="text-center">
+                    <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                  </div>
+                  <form class="user" method="post">
+                    <div class="form-group">
+                      <input type="email" class="form-control form-control-user" id="email" name="email" aria-describedby="emailHelp" placeholder="Masukan email...">
+                    </div>
+                    <div class="form-group">
+                      <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Masukan password....">
+                    </div>
+
+                    <button type="submit" name="insert" class="btn btn-primary btn-user btn-block">
+                      Login
+                    </button>
+
+                  </form>
+                  <hr>
+                  <div class="text-center">
+                    <a class="small" href="forgot-password.html">Forgot Password?</a>
+                  </div>
+                  <div class="text-center">
+                    <a class="small" href="register.php">Create an Account!</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
-      <div class="card-text">
-        <form action="" method="post">
-          <div class="mb-3 row">
-            <label for="exampleInputEmail1" class="form-label">Email address</label>
-            <input class="input_auth" type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
-          </div>
-          <div class="mb-3 row">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input class="input_auth" type="password" class="form-control" name="password" id="exampleInputPassword1">
-          </div>
-          <div class="mb-3">
-            <button type="submit" name="insert" class="btn btn-success">Login</button>
-          </div>
-        </form>
 
-        <a href="register.php">
-          <button type="button" class="btn btn-primary">Register</button>
-        </a>
-
-
-      </div>
     </div>
+
   </div>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin-2.min.js"></script>
 
 </body>
 

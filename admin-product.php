@@ -226,7 +226,7 @@ function category_name($koneksi, $category_id)
                         <td><?= $b['updated_at']; ?></td>
                         <td>
                           <row>
-                            <a class="btn btn-sm btn bt btn-secondary" href="admin-product-edit.php?id=<?= $b['id']; ?>">
+                            <a class="btn btn-sm btn bt btn-secondary mb-1 mr-1" href="admin-product-edit.php?id=<?= $b['id']; ?>">
                               Edit
                             </a>
                             <a class="btn btn-sm btn-danger" href="admin-product-delete.php?id=<?= $b['id']; ?>" onclick="return confirm('Yakin ingin dihapus?')">Delete</a>

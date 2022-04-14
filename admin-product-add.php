@@ -61,7 +61,7 @@ if (isset($_POST['insert'])) {
 <body>
   <div class="container">
     <div class="card shadow my-4">
-      <div class="card-header py-3 d-flex justify-content-between align-items-center">
+      <div class="card-header py-4 d-flex justify-content-between align-items-center">
         <h6 class="m-0 font-weight-bold text-primary">Add a Product</h6>
       </div>
       <div class="card-body">
@@ -73,12 +73,18 @@ if (isset($_POST['insert'])) {
           </div>
 
           <label for="category" class="form-label">Category</label>
-          <div class="mb-3 category">
+          <div class="mb-3 mt-1 category">
             <?php
             while ($b = mysqli_fetch_array($category)) {
             ?>
-              <input type="radio" id="category_id" name="category_id" value=<?= $b['id']; ?>>
-              <label><?= $b['name']; ?></label><br>
+              <label class="mr-2 mt-1" style="margin-left: 0 !important;">
+                <input type="radio" class="card-input-element" id="category_id" name="category_id" value=<?= $b['id'];  ?> />
+
+                <div class="card card-input px-4 py-2">
+                  <?= $b['name']; ?>
+                </div>
+
+              </label>
             <?php
             }
             ?>
@@ -101,7 +107,7 @@ if (isset($_POST['insert'])) {
 
 
           <div class="mt-5 mb-3">
-            <button type="submit" name="insert" class="btn btn-primary">Add Product</button>
+            <button type="submit" name="insert" class="btn btn-primary btn-block">Add Product</button>
           </div>
         </form>
       </div>

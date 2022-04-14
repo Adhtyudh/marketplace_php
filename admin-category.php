@@ -202,7 +202,7 @@ $category = mysqli_query($koneksi, "SELECT * FROM products_categories");
                                                 <td><?= $b['name']; ?></td>
                                                 <td>
                                                     <row>
-                                                        <a class="btn btn-sm btn bt btn-secondary" href="admin-category-edit.php?id=<?= $b['id']; ?>">
+                                                        <a class="btn btn-sm btn bt btn-secondary mb-1 mr-1" href="admin-category-edit.php?id=<?= $b['id']; ?>">
                                                             Edit
                                                         </a>
                                                         <a class="btn btn-sm btn-danger" href="uni-delete.php?id=<?= $b['id']; ?>&table=products_categories&header=admin-category.php" onclick="return confirm('Yakin ingin dihapus?')">Delete</a>

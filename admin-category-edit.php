@@ -44,7 +44,7 @@ if (isset($_POST['insert'])) {
 <body>
     <div class="container">
         <div class="card shadow my-4">
-            <div class="card-header py-3 d-flex justify-content-between align-items-center">
+            <div class="card-header py-4 d-flex justify-content-between align-items-center">
                 <h6 class="m-0 font-weight-bold text-primary">Edit a Category</h6>
             </div>
             <div class="card-body">
@@ -56,7 +56,7 @@ if (isset($_POST['insert'])) {
                     </div>
 
                     <div class="mt-5 mb-3">
-                        <button type="submit" name="insert" class="btn btn-primary">Add Product</button>
+                        <button type="submit" name="insert" class="btn btn-primary btn-block">Add Product</button>
                     </div>
                 </form>
             </div>
