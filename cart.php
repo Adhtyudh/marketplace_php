@@ -2,6 +2,7 @@
 <html>
 <head>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>
@@ -12,7 +13,7 @@
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 	  <div class="container-fluid">
-	    <h3 class="navbar-brand" href="#">Chekuot</h3>
+	    <h3 class="navbar-brand" href="#">Checkout</h3>
 	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	      <span class="navbar-toggler-icon"></span>
 	    </button>
@@ -46,9 +47,15 @@
 	    </div>
 	  </div>
 	</nav>
-	<div class="container mt-3 ">
+	<div class="container mt-3 " >
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		  <div class="container-fluid">
+		  <div class="container-fluid  "  >
+		  	<div class="form-check">
+			  <input class="form-check-input" type="checkbox" value="" id="flexCheckCheckedDisabled"  >
+			  <label class="form-check-label" for="flexCheckCheckedDisabled">
+			    Pilih Semua
+			  </label>
+			</div>
 		    <a class="navbar-brand" href="#">Navbar</a>
 		    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 		      <span class="navbar-toggler-icon"></span>
